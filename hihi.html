@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Troll Hover Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .troll-box {
+      position: absolute;
+      padding: 15px 25px;
+      background: hotpink;
+      color: white;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: top 0.3s ease, left 0.3s ease;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="troll-box" id="troll">
+    Nếu bạn không bê đê thì click vào đây
+  </div>
+
+  <script>
+    const box = document.getElementById("troll");
+
+    // Đặt vị trí ban đầu giữa màn hình
+    box.style.top = window.innerHeight / 2 - box.offsetHeight / 2 + "px";
+    box.style.left = window.innerWidth / 2 - box.offsetWidth / 2 + "px";
+
+    // Khi di chuột vào thì nhảy chỗ khác
+    box.addEventListener("mouseenter", () => {
+      const maxX = window.innerWidth - box.offsetWidth;
+      const maxY = window.innerHeight - box.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      box.style.left = randomX + "px";
+      box.style.top = randomY + "px";
+    });
+  </script>
+</body>
+</html>
